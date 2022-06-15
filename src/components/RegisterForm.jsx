@@ -15,7 +15,7 @@ import Copyright from './Copyright';
 
 const theme = createTheme();
 
-export default function SignUpForm() {
+export default function RegisterForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
