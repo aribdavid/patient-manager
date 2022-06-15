@@ -9,8 +9,12 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Copyright from './Copyright';
+import React from 'react';
 
 const theme = createTheme({
   palette: {
@@ -35,6 +39,13 @@ const theme = createTheme({
 });
 
 export default function RegisterForm() {
+  const [value, setValue] = React.useState(
+    new Date('2014-08-18T21:11:54'),
+  );
+
+  const handleChange = (newValue) => {
+    setValue(newValue);
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -60,7 +71,7 @@ export default function RegisterForm() {
           <img src={require('../resources/logo1.png')} width="40px" alt='logo' />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Register
+            Registration Form
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -95,21 +106,31 @@ export default function RegisterForm() {
                   autoComplete="email"
                 />
               </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                />
-              </Grid>
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <Grid item xs={12}>  
+                  <MobileDatePicker
+                  label="Date of birth"
+                  inputFormat="MM/dd/yyyy"
+                  value={value}
+                  onChange={handleChange}
+                  renderInput={(params) => <TextField {...params} />}
+                    />
+                </Grid>
+              </LocalizationProvider>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    name="address"
+                    label="Full Address"
+                    type="address"
+                    id="address"
+                  />
+                </Grid>
               <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
+                  label="I agree with all terms and conditions"
                 />
               </Grid>
             </Grid>
@@ -119,12 +140,12 @@ export default function RegisterForm() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              Register
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
+                <Link href="/browse" variant="body2">
+                  Already registered? Browse patients here
                 </Link>
               </Grid>
             </Grid>
