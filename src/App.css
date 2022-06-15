@@ -13,6 +13,18 @@
   }
 }
 
+@font-face {
+  font-family: Kautiva;
+  src: url("../src/resources/fonts/KautivaBold/Kautiva\ Bold.otf") format("opentype");
+}
+
+h1{
+  font-family: 'Kautiva';
+  line-height: 1.1; 
+  margin-bottom:15px; 
+  color: #002639;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
