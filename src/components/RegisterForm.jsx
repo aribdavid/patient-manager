@@ -7,13 +7,32 @@ import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Copyright from './Copyright';
 
-const theme = createTheme();
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#2596be', 
+    },
+    secondary: {
+
+      main: '#002639',
+     
+    },
+    terciary: {
+    
+      main: "#7f7f7f",
+     
+    },
+    quaternary: {  
+      main: '#ffffff',
+     
+    },
+  }
+});
 
 export default function RegisterForm() {
   const handleSubmit = (event) => {
@@ -38,10 +57,10 @@ export default function RegisterForm() {
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
+          <img src={require('../resources/logo1.png')} width="40px" alt='logo' />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign up
+            Register
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>

@@ -68,7 +68,7 @@ export default function MainPage() {
               spacing={2}
               justifyContent="center"
             >
-              <Button variant="contained">Search Patients</Button>
+              <Button variant="contained" onClick={() => navigate('/browse')}>Search Patients</Button>
               <Button variant="outlined" onClick={() => navigate('/register')} >Register Patient</Button>
             </Stack>
           </Container>
