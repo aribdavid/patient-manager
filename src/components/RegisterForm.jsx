@@ -14,7 +14,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Copyright from './Copyright';
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import Header from './Header';
 
 
@@ -41,8 +41,9 @@ const theme = createTheme({
 });
 
 export default function RegisterForm() {
+
   
-  const [value, setValue] = React.useState(
+  const [value, setValue] = useState(
     new Date('2014-08-18T21:11:54'),
   );
 
@@ -55,19 +56,36 @@ export default function RegisterForm() {
     return month+"/"+day+"/"+year;
 }
 
+
+const postForm = async (data) => {
+  
+  const url = 'https://aribdavid-patient-manager-api.herokuapp.com/patient';
+  fetch(url, {   
+    method: "POST",
+    body: JSON.stringify(data),     
+    headers: {
+        "Content-type": "application/json; charset=UTF-8"
+    }
+})
+.then(response => response.json()) 
+.then(json => console.log(json));
+}
+
   const handleChange = (newValue) => {
     setValue(newValue);
   };
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const date = formatDate(value)
-    console.log({
+    await postForm({
       email: data.get('email'),
       name: `${data.get("firstName")} ${data.get("lastName")}` ,
       address: data.get('address'),
       dateOfBirth: date
     });
+
+    // window.location.reload();
   };
 
   return (

@@ -58,8 +58,8 @@ export default function Browse(){
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {data.length > 0 && data.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+            {data.length > 0 && data.map((card, index) => (
+              <Grid item key={index} xs={12} sm={6} md={4}>
                 <Card
                   sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                 >
