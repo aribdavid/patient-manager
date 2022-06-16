@@ -8,6 +8,10 @@ import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { useEffect, useState } from 'react';
+
+
+
 
 const theme = createTheme({
   palette: {
@@ -32,7 +36,21 @@ const theme = createTheme({
 });
 
 export default function Browse(){
-  const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  const [data, setData ] = useState([]);
+
+  
+   useEffect( () => {
+    fetchPatients()
+    .then((res) => setData(res));
+  }, [])
+
+  const fetchPatients = async () => {
+    const url = 'https://aribdavid-patient-manager-api.herokuapp.com/patient';
+    const response = await fetch(url)
+    .then((data) => data.json());
+    return response;
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -40,7 +58,7 @@ export default function Browse(){
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((card) => (
+            {data.length > 0 && data.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={4}>
                 <Card
                   sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
@@ -56,11 +74,24 @@ export default function Browse(){
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      Name: 
+                      {' '}
+                      {card.name}
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the
-                      content.
+                      Date of Birth:
+                      {' '}
+                    {card.date_of_birth.split("T")[0]}
+                    </Typography>
+                    <Typography>
+                    Email: 
+                    {' '}
+                    {card.email}
+                    </Typography>
+                    <Typography>
+                      Address:
+                      {' '}
+                    {card.address}
                     </Typography>
                   </CardContent>
                   <CardActions>

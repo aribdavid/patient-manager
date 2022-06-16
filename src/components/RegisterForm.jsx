@@ -15,6 +15,7 @@ import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Copyright from './Copyright';
 import React from 'react';
+import Header from './Header';
 
 const theme = createTheme({
   palette: {
@@ -47,7 +48,7 @@ export default function RegisterForm() {
     setValue(newValue);
   };
   const handleSubmit = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
       email: data.get('email'),
@@ -57,6 +58,7 @@ export default function RegisterForm() {
 
   return (
     <ThemeProvider theme={theme}>
+      <Header />
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -70,7 +72,7 @@ export default function RegisterForm() {
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
           <img src={require('../resources/logo1.png')} width="40px" alt='logo' />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h4">
             Registration Form
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
