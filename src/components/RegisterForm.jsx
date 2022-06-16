@@ -44,8 +44,14 @@ export default function RegisterForm() {
 
   
   const [value, setValue] = useState(
-    new Date('2014-08-18T21:11:54'),
-  );
+    new Date('2022-08-18T21:11:54'),
+  )
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [address, setAddress] = useState('');
+
+
 
   // formats full data to MM/DD/YYYY
   function formatDate(receivedData){
@@ -84,8 +90,11 @@ const postForm = async (data) => {
       address: data.get('address'),
       dateOfBirth: date
     });
-
-    // window.location.reload();
+    setFirstName('');
+    setLastName('')
+    setEmail('');
+    setAddress('');
+    setValue(new Date('2022-08-18T21:11:54'));
   };
 
   return (
@@ -115,6 +124,8 @@ const postForm = async (data) => {
                   name="firstName"
                   required
                   fullWidth
+                  onChange={({target}) => setFirstName(target.value)}
+                  value={firstName}
                   id="firstName"
                   label="First Name"
                   autoFocus
@@ -125,6 +136,8 @@ const postForm = async (data) => {
                   required
                   fullWidth
                   id="lastName"
+                  value={lastName}
+                  onChange={({target}) => setLastName(target.value)}
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
@@ -135,6 +148,8 @@ const postForm = async (data) => {
                   required
                   fullWidth
                   id="email"
+                  value={email}
+                  onChange={({target}) => setEmail(target.value)}
                   label="Email Address"
                   name="email"
                   autoComplete="email"
@@ -157,6 +172,8 @@ const postForm = async (data) => {
                   <TextField
                     required
                     fullWidth
+                    value={address}
+                    onChange={({target}) => setAddress(target.value)} 
                     name="address"
                     label="Full Address"
                     type="address"
