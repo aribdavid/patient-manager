@@ -14,8 +14,9 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Copyright from './Copyright';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from './Header';
+
 
 const theme = createTheme({
   palette: {
@@ -40,19 +41,32 @@ const theme = createTheme({
 });
 
 export default function RegisterForm() {
+  
   const [value, setValue] = React.useState(
     new Date('2014-08-18T21:11:54'),
   );
+
+  // formats full data to MM/DD/YYYY
+  function formatDate(receivedData){
+    let data = receivedData,
+        day  = data.getDate().toString().padStart(2, '0'),
+        month  = (data.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+        year  = data.getFullYear();
+    return month+"/"+day+"/"+year;
+}
 
   const handleChange = (newValue) => {
     setValue(newValue);
   };
   const handleSubmit = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     const data = new FormData(event.currentTarget);
+    const date = formatDate(value)
     console.log({
       email: data.get('email'),
-      password: data.get('password'),
+      name: `${data.get("firstName")} ${data.get("lastName")}` ,
+      address: data.get('address'),
+      dateOfBirth: date
     });
   };
 
@@ -111,8 +125,10 @@ export default function RegisterForm() {
               <LocalizationProvider dateAdapter={AdapterDateFns}>
                 <Grid item xs={12}>  
                   <MobileDatePicker
-                  label="Date of birth"
+                  label="dateOfBirth"
                   inputFormat="MM/dd/yyyy"
+                  id="dateOfBirth"
+                  name="dateOfBirth"
                   value={value}
                   onChange={handleChange}
                   renderInput={(params) => <TextField {...params} />}
