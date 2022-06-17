@@ -21,7 +21,7 @@ export default function CardGrid({card, index}){
       />
       <CardContent sx={{ flexGrow: 1 }}>
         <Typography gutterBottom variant="h5" component="h2">
-          {card.name.split(' ')[0]}
+          {card.first_name}
         </Typography>
         {/* <Typography>
           Date of Birth:

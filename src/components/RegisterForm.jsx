@@ -114,7 +114,7 @@ const postForm = async (data) => {
           <img src={require('../resources/images/logo1.png')} width="40px" alt='logo' />
           </Avatar>
           <Typography component="h1" variant="h4">
-            Registration Form
+            Registration
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>

@@ -24,11 +24,12 @@
 
 }
 
-h1{
+h1, #footer{
   font-family: 'Kautiva';
   line-height: 1.1; 
   margin-bottom:15px; 
   color: #002639;
+  cursor: pointer
 }
 
 #main-title{

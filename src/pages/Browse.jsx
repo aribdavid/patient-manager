@@ -4,6 +4,7 @@ import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import { useEffect, useState } from 'react';
 import CardGrid from "../components/CardGrid";
+import Footer from "../components/Footer";
 
 
 
@@ -58,6 +59,7 @@ export default function Browse(){
             ))}
           </Grid>
         </Container>
+        <Footer />
     </ThemeProvider>  
   )
 }

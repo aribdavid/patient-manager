@@ -1,9 +1,5 @@
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -14,14 +10,15 @@ import React, { useState } from 'react';
 
 
 
-export default function EditForm(){
+export default function EditForm({name, currentEmail, currentAddress, dateOfBirth}){
   const [value, setValue] = useState(
-    new Date('2022-08-18T21:11:54'),
+   dateOfBirth,
   )
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [address, setAddress] = useState('');
+  const [firstName, setFirstName] = useState(name.split(' ')[0]);
+  const [lastName, setLastName] = useState(name
+    .split(' ').filter((_elem,index) => index !== 0).join(' '));
+  const [email, setEmail] = useState(currentEmail);
+  const [address, setAddress] = useState(currentAddress);
 
   function formatDate(receivedData){
     let data = receivedData,
@@ -68,18 +65,15 @@ const handleSubmit = async (event) => {
 
   return (
     <Box
-    sx={{
-      marginTop: 8,
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-    }}
+    // sx={{
+    //   marginTop: 8,
+    //   display: 'flex',
+    //   flexDirection: 'column',
+    //   alignItems: 'center',
+    // }}
   >
-    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-    <img src={require('../resources/images/logo1.png')} width="40px" alt='logo' />
-    </Avatar>
     <Typography component="h1" variant="h4">
-      Registration Form
+      Edit Patient
     </Typography>
     <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
       <Grid container spacing={2}>
@@ -157,12 +151,6 @@ const handleSubmit = async (event) => {
             <input type='file' id="myFile" hidden />
           </Button>  
           </Grid>  
-        <Grid item xs={12}>
-          <FormControlLabel
-            control={<Checkbox value="allowExtraEmails" color="primary" />}
-            label="I agree with all terms and conditions"
-          />
-        </Grid>
       </Grid>
       <Button
         type="submit"
@@ -170,15 +158,8 @@ const handleSubmit = async (event) => {
         variant="contained"
         sx={{ mt: 3, mb: 2 }}
       >
-        Register
+        Finish
       </Button>
-      <Grid container justifyContent="flex-end">
-        <Grid item>
-          <Link href="/browse" variant="body2">
-            Already registered? Browse patients here
-          </Link>
-        </Grid>
-      </Grid>
     </Box>
   </Box>
   )

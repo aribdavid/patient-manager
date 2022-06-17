@@ -36,14 +36,22 @@ export default function CardModal({patient, title}) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-        <Button size='small' sx={{ position:'absolute', top:"1%", right: '1%', border:'1px solid #2596be' }} 
+        <Button variant="contained" size='small' sx={{ position:'absolute', top:"1%", right: '1%', border:'1px solid #2596be' }} 
         onClick={() =>{setEdit(false); handleClose() }}>Close</Button> 
-        {edit === true ? <input type='text' /> : <Card>
+        {edit === true ? 
+        <EditForm 
+        name={patient.name} 
+        currentEmail={patient.email}
+        currentAddress={patient.address}
+        dateOfBirth={patient.date_of_birth}
+        /> : <Card>
           <CardContent >
                     <Typography gutterBottom variant="h4" component="h1">
                       Full Name: 
                       {' '}
-                      {patient.name}
+                      {patient.first_name}
+                      {' '}
+                      {patient.last_name}
                     </Typography>
                     <Typography>
                       Date of Birth:
