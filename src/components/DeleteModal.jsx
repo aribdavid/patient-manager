@@ -16,10 +16,21 @@ const style = {
   p: 4,
 };
 
-export default function MessageModal({type,refresher,buttonName, message, deleteUser}) {
+export default function DeleteModal({patientId,type,buttonName, message}) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const deleteForm = async (id) => {
+    const url = `https://aribdavid-patient-manager-api.herokuapp.com/patient/${id}`;
+    fetch(url, {   
+      method: "DELETE",  
+      headers: {
+          "Content-type": "application/json"
+      }
+  })
+  .then(response => response.json()) 
+  }
 
   return (
     <div>
@@ -36,17 +47,15 @@ export default function MessageModal({type,refresher,buttonName, message, delete
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-        <Button variant="contained" type='button' size='small' sx={{ position:'absolute', top:"1%", right: '1%', border:'1px solid #2596be' }} 
-        onClick={refresher}>Close</Button> 
           <Typography id="modal-modal-title" variant="h6" component="h2">
             {message}
           </Typography>
-         {deleteUser === true &&  <CardActions>
+          <CardActions>
           <Button variant="contained" type='button' size='small'
-        onClick={refresher}>Sim</Button> 
+        onClick={()=> deleteForm(patientId) }>Sim</Button> 
         <Button variant="contained" type='button' size='small' 
-        onClick={refresher}>Não</Button> 
-        </CardActions> } 
+        onClick={handleClose}>Não</Button> 
+        </CardActions>
         </Box>
       </Modal>
     </div>

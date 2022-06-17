@@ -48,18 +48,6 @@ const updateForm = async (patientId,data) => {
 .then(response => response.json()) 
 }
 
-// const deleteForm = async (email) => {
-//   const url = `https://aribdavid-patient-manager-api.herokuapp.com/patient/`;
-//   fetch(url, {   
-//     method: "DELETE",
-//     body: JSON.stringify(email),     
-//     headers: {
-//         "Content-type": "application/json"
-//     }
-// })
-// .then(response => response.json()) 
-// }
-
 const handleChange = (newValue) => {
   setValue(newValue);
 };

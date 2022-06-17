@@ -6,6 +6,8 @@ import Modal from '@mui/material/Modal';
 import CardContent from '@mui/material/CardContent';
 import Card from '@mui/material/Card';
 import EditForm from './EditForm';
+import DeleteModal from './DeleteModal'
+import { CardActions } from '@mui/material';
 
 
 
@@ -77,7 +79,10 @@ export default function CardModal({patient, title}) {
                     <b>{patient.address}</b>
                     </Typography>
                   </CardContent>
-                  <Button type='button' onClick={() =>setEdit(true)} size="small">Edit</Button>
+                  <CardActions>
+                  <Button type='button' variant="outlined" onClick={() =>setEdit(true)} size="small">Edit</Button>
+                  <DeleteModal buttonName='Delete' type='button' patientId={patient.id} message={`Are you sure you want to delete user ${patient.first_name}?`} />
+                  </CardActions>
         </Card>
         }
         </Box>
