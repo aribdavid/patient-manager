@@ -8,6 +8,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import CardModal from '../components/CardModal'
 import { useEffect, useState } from 'react';
 
 
@@ -65,10 +66,6 @@ export default function Browse(){
                 >
                   <CardMedia
                     component="img"
-                    sx={{
-                      // 16:9
-                      pt: '56.25%',
-                    }}
                     src={require('../resources/images/profile-default.jpeg')}
                     alt="random"
                   />
@@ -76,9 +73,9 @@ export default function Browse(){
                     <Typography gutterBottom variant="h5" component="h2">
                       Name: 
                       {' '}
-                      {card.name}
+                      {card.name.split(' ')[0]}
                     </Typography>
-                    <Typography>
+                    {/* <Typography>
                       Date of Birth:
                       {' '}
                     {card.date_of_birth.split("T")[0]}
@@ -92,10 +89,10 @@ export default function Browse(){
                       Address:
                       {' '}
                     {card.address}
-                    </Typography>
+                    </Typography> */}
                   </CardContent>
                   <CardActions>
-                    <Button size="small">View</Button>
+                    <CardModal title={"View"} patient={card}/>
                     <Button size="small">Edit</Button>
                   </CardActions>
                 </Card>
