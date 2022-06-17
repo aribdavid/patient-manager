@@ -28,7 +28,7 @@ export default function CardModal({patient, title}) {
 
   return (
     <div>
-      <Button size="small" onClick={handleOpen}>{title}</Button>
+      <Button type='button' size="small" onClick={handleOpen}>{title}</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -36,16 +36,24 @@ export default function CardModal({patient, title}) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-        <Button variant="contained" size='small' sx={{ position:'absolute', top:"1%", right: '1%', border:'1px solid #2596be' }} 
-        onClick={() =>{setEdit(false); handleClose() }}>Close</Button> 
+   
         {edit === true ? 
+        <>
+        <Button variant="contained" type='button' size='small' sx={{ position:'absolute', top:"1%", right: '1%', border:'1px solid #2596be' }} 
+        onClick={() =>{setEdit(false)}}>Back</Button> 
         <EditForm 
-        name={patient.name} 
+        patientId={patient.id}
+        currentFirstName={patient.first_name} 
+        currentLastName={patient.last_name}
         currentEmail={patient.email}
         currentAddress={patient.address}
         dateOfBirth={patient.date_of_birth}
-        /> : <Card>
+        /> 
+        </>
+         : <Card>
           <CardContent >
+          <Button variant="contained" type='button' size='small' sx={{ position:'absolute', top:"1%", right: '1%', border:'1px solid #2596be' }} 
+        onClick={() =>{setEdit(false); handleClose() }}>Back</Button> 
                     <Typography gutterBottom variant="h4" component="h1">
                       Full Name: 
                       {' '}
@@ -69,7 +77,7 @@ export default function CardModal({patient, title}) {
                     {patient.address}
                     </Typography>
                   </CardContent>
-                  <Button onClick={() =>setEdit(true)} size="small">Edit</Button>
+                  <Button type='button' onClick={() =>setEdit(true)} size="small">Edit</Button>
         </Card>
         }
         </Box>

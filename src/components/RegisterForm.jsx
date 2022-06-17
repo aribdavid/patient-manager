@@ -86,7 +86,8 @@ const postForm = async (data) => {
     const date = formatDate(value)
     await postForm({
       email: data.get('email'),
-      name: `${data.get("firstName")} ${data.get("lastName")}` ,
+      firstName: data.get("firstName"),
+      lastName: data.get("lastName"),
       address: data.get('address'),
       dateOfBirth: date
     });

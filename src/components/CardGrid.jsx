@@ -8,9 +8,9 @@ import Typography from '@mui/material/Typography';
 import CardModal from '../components/CardModal'
 
 
-export default function CardGrid({card, index}){
+export default function CardGrid({card}){
   return(
-    <Grid item key={index} xs={12} sm={6} md={4}>
+    <Grid item xs={12} sm={6} md={4}>
     <Card
       sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
     >

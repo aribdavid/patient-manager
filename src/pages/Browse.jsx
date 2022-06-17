@@ -55,7 +55,7 @@ export default function Browse(){
           {/* End hero unit */}
           <Grid container spacing={4}>
             {data.length > 0 && data.map((card, index) => (
-             <CardGrid card={card} index={index} />
+             <CardGrid card={card} key={index}  />
             ))}
           </Grid>
         </Container>

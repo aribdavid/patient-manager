@@ -7,16 +7,24 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import React, { useState } from 'react';
+import Container from '@mui/material/Container';
+import CssBaseline from '@mui/material/CssBaseline';
+import MessageModal from './MessageModal'
+import { CardActions } from '@mui/material';
 
 
-
-export default function EditForm({name, currentEmail, currentAddress, dateOfBirth}){
+export default function EditForm({
+  patientId,
+  currentFirstName,
+  currentLastName, 
+  currentEmail, 
+  currentAddress, 
+  dateOfBirth}){
   const [value, setValue] = useState(
-   dateOfBirth,
+    new Date(dateOfBirth)
   )
-  const [firstName, setFirstName] = useState(name.split(' ')[0]);
-  const [lastName, setLastName] = useState(name
-    .split(' ').filter((_elem,index) => index !== 0).join(' '));
+  const [firstName, setFirstName] = useState(currentFirstName);
+  const [lastName, setLastName] = useState(currentLastName);
   const [email, setEmail] = useState(currentEmail);
   const [address, setAddress] = useState(currentAddress);
 
@@ -28,14 +36,13 @@ export default function EditForm({name, currentEmail, currentAddress, dateOfBirt
     return month+"/"+day+"/"+year;
 }
 
-const postForm = async (data) => {
-  
-  const url = 'https://aribdavid-patient-manager-api.herokuapp.com/patient';
+const updateForm = async (patientId,data) => {
+  const url = `https://aribdavid-patient-manager-api.herokuapp.com/patient/${patientId}`;
   fetch(url, {   
-    method: "POST",
+    method: "PUT",
     body: JSON.stringify(data),     
     headers: {
-        "Content-type": "application/json; charset=UTF-8"
+        "Content-type": "application/json"
     }
 })
 .then(response => response.json()) 
@@ -49,21 +56,22 @@ const handleSubmit = async (event) => {
   event.preventDefault();
   const data = new FormData(event.currentTarget);
   const date = formatDate(value)
-  await postForm({
+  const patient = {
+    firstName: data.get("firstName"),
+    lastName: data.get("lastName"),
+    dateOfBirth: date,
     email: data.get('email'),
-    name: `${data.get("firstName")} ${data.get("lastName")}` ,
     address: data.get('address'),
-    dateOfBirth: date
-  });
-  setFirstName('');
-  setLastName('')
-  setEmail('');
-  setAddress('');
-  setValue(new Date('2022-08-18T21:11:54'));
+  }
+  await updateForm(patientId,patient);
 };
 
-
+const refreshPage = ()=>{
+  window.location.reload();
+}
   return (
+    <Container component="main" maxWidth="xs">
+        <CssBaseline />
     <Box
     // sx={{
     //   marginTop: 8,
@@ -152,15 +160,14 @@ const handleSubmit = async (event) => {
           </Button>  
           </Grid>  
       </Grid>
-      <Button
-        type="submit"
-        fullWidth
-        variant="contained"
+      <br/>
+     <CardActions sx={{justifyContent: 'center'}}>
+     <MessageModal      
         sx={{ mt: 3, mb: 2 }}
-      >
-        Finish
-      </Button>
+        refresher={refreshPage} buttonName='Finish' message='User Updated Successfully!' />
+     </CardActions>
     </Box>
   </Box>
+  </Container>
   )
 }
