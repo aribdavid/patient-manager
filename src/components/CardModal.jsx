@@ -4,6 +4,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import CardContent from '@mui/material/CardContent';
+import Card from '@mui/material/Card';
+import EditForm from './EditForm';
 
 
 
@@ -14,13 +16,13 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 400,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
   boxShadow: 24,
   p: 4,
 };
 
 export default function CardModal({patient, title}) {
   const [open, setOpen] = React.useState(false);
+  const [edit, setEdit] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -34,8 +36,10 @@ export default function CardModal({patient, title}) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-        <Button onClick={handleClose}>X</Button> 
-        <CardContent >
+        <Button size='small' sx={{ position:'absolute', top:"1%", right: '1%', border:'1px solid #2596be' }} 
+        onClick={() =>{setEdit(false); handleClose() }}>Close</Button> 
+        {edit === true ? <input type='text' /> : <Card>
+          <CardContent >
                     <Typography gutterBottom variant="h4" component="h1">
                       Full Name: 
                       {' '}
@@ -57,7 +61,9 @@ export default function CardModal({patient, title}) {
                     {patient.address}
                     </Typography>
                   </CardContent>
-                  <Button size="small">Edit</Button>
+                  <Button onClick={() =>setEdit(true)} size="small">Edit</Button>
+        </Card>
+        }
         </Box>
       </Modal>
      </div>
