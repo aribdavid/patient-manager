@@ -69,7 +69,7 @@ export default function Browse(){
                       // 16:9
                       pt: '56.25%',
                     }}
-                    image="https://source.unsplash.com/random"
+                    src={require('../resources/images/profile-default.jpeg')}
                     alt="random"
                   />
                   <CardContent sx={{ flexGrow: 1 }}>

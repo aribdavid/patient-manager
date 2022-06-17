@@ -18,11 +18,26 @@
   src: url("../src/resources/fonts/KautivaBold/Kautiva\ Bold.otf") format("opentype");
 }
 
+@font-face{
+  font-family: Typold;
+  src: url("../src/resources/fonts/TypoldBold/\ Typold\ Medium.otf") format("opentype");
+
+}
+
 h1{
   font-family: 'Kautiva';
   line-height: 1.1; 
   margin-bottom:15px; 
   color: #002639;
+}
+
+#main-title{
+  font-family: 'Typold';
+  color: #002639;
+
+}
+#highlight{
+  color: #2596be
 }
 
 .App-header {

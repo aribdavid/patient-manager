@@ -8,7 +8,7 @@ export default function Header(){
   return(
     <AppBar color="quaternary" position="relative">
         <Toolbar>
-          <img onClick={() => navigate('/home')} src={require('../resources/logo1.png')} width="65px" alt='logo' />
+          <img onClick={() => navigate('/home')} src={require('../resources/images/logo1.png')} width="65px" alt='logo' />
           <h1 onClick={() => navigate('/home')} >medcloud </h1>
         </Toolbar>
     </AppBar>

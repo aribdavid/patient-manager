@@ -56,8 +56,9 @@ export default function MainPage() {
               align="center"
               color="text.primary"
               gutterBottom
+              id='main-title'
             >
-              MedCloud Patient Manager
+              MedCloud's Patient  <span id ='highlight'>Manager</span>
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
               Browser for registered patients or register a new one for free!

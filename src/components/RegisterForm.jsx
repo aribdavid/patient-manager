@@ -111,7 +111,7 @@ const postForm = async (data) => {
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-          <img src={require('../resources/logo1.png')} width="40px" alt='logo' />
+          <img src={require('../resources/images/logo1.png')} width="40px" alt='logo' />
           </Avatar>
           <Typography component="h1" variant="h4">
             Registration Form
@@ -158,7 +158,7 @@ const postForm = async (data) => {
               <LocalizationProvider dateAdapter={AdapterDateFns}>
                 <Grid item xs={12}>  
                   <MobileDatePicker
-                  label="dateOfBirth"
+                  label="Date of Birth"
                   inputFormat="MM/dd/yyyy"
                   id="dateOfBirth"
                   name="dateOfBirth"
@@ -166,7 +166,7 @@ const postForm = async (data) => {
                   onChange={handleChange}
                   renderInput={(params) => <TextField {...params} />}
                     />
-                </Grid>
+                </Grid>              
               </LocalizationProvider>
                 <Grid item xs={12}>
                   <TextField
@@ -174,12 +174,24 @@ const postForm = async (data) => {
                     fullWidth
                     value={address}
                     onChange={({target}) => setAddress(target.value)} 
-                    name="address"
+                    name="addess"
                     label="Full Address"
                     type="address"
                     id="address"
                   />
                 </Grid>
+                <Grid item xs={12}>
+                <Typography component="h6" variant="h7">
+            Choose your profile picture
+            </Typography>     
+                <Button
+                  variant="contained"
+                  component="label"
+                >
+                  Upload File
+                  <input type='file' id="myFile" hidden />
+                </Button>  
+                </Grid>  
               <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" />}
