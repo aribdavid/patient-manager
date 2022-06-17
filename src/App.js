@@ -2,7 +2,7 @@ import './App.css';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Register from './pages/Register';
-import Browse from './pages/Browse';
+import Browser from './pages/Browser';
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <Route path='/' element={<Navigate to="/home" />}/>
       <Route path='/register' element={<Register />} />
       <Route path='/home' element={<Home />} />
-      <Route path='/browse' element={<Browse />} />
+      <Route path='/browse' element={<Browser />} />
     </Routes>
   );
 }
