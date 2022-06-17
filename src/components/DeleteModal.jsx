@@ -25,11 +25,12 @@ export default function DeleteModal({patientId,type,buttonName, message}) {
     const url = `https://aribdavid-patient-manager-api.herokuapp.com/patient/${id}`;
     fetch(url, {   
       method: "DELETE",  
-      headers: {
-          "Content-type": "application/json"
-      }
   })
-  .then(response => response.json()) 
+  }
+  
+  const refreshPage = ()=>{
+    window.alert('Usuario Deletado com Sucesso');
+    window.location.reload();
   }
 
   return (
@@ -52,7 +53,7 @@ export default function DeleteModal({patientId,type,buttonName, message}) {
           </Typography>
           <CardActions>
           <Button variant="contained" type='button' size='small'
-        onClick={()=> deleteForm(patientId) }>Sim</Button> 
+        onClick={()=>{deleteForm(patientId); refreshPage() } }>Sim</Button> 
         <Button variant="contained" type='button' size='small' 
         onClick={handleClose}>Não</Button> 
         </CardActions>
