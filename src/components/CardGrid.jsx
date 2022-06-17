@@ -28,21 +28,6 @@ export default function CardGrid({card}){
           {' '}
           <b>{ new Date().getFullYear() - card.date_of_birth.split('-')[0]}</b>     
         </Typography>
-        {/* <Typography>
-          Date of Birth:
-          {' '}
-        {card.date_of_birth.split("T")[0]}
-        </Typography>
-        <Typography>
-        Email: 
-        {' '}
-        {card.email}
-        </Typography>
-        <Typography>
-          Address:
-          {' '}
-        {card.address}
-        </Typography> */}
       </CardContent>
       <CardActions sx={{ alignSelf: 'flex-end' }}>
         <CardModal  title={"More Details"} patient={card}/>

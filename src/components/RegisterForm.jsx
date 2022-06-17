@@ -13,11 +13,9 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Footer from './Footer'
 import React, { useState } from 'react';
 import Header from './Header';
 import MessageModal from './MessageModal';
-
 
 const theme = createTheme({
   palette: {
@@ -94,11 +92,6 @@ const postForm = async (data) => {
       address: data.get('address'),
       dateOfBirth: date
     });
-    // setFirstName('');
-    // setLastName('')
-    // setEmail('');
-    // setAddress('');
-    // setValue(new Date('2022-08-18T21:11:54'));
   };
 
   return (
@@ -210,14 +203,6 @@ const postForm = async (data) => {
               buttonName='Register' 
               message='User Created Successfully!' 
             />
-            {/* <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Register
-            </Button> */}
             <br/>
             <Grid container justifyContent="flex-end">
               <Grid item>
@@ -228,7 +213,6 @@ const postForm = async (data) => {
             </Grid>
           </Box>
         </Box>
-        <Footer />
       </Container>
     </ThemeProvider>
   );

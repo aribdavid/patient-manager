@@ -6,7 +6,6 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Footer from './Footer';
 import Header from './Header';
 import { useNavigate } from 'react-router-dom';
 
@@ -41,7 +40,6 @@ export default function MainPage() {
       <CssBaseline />
       <Header />
       <main>
-        {/* Hero unit */}
         <Box
           sx={{
             bgcolor: 'background.paper',
@@ -75,7 +73,7 @@ export default function MainPage() {
           </Container>
         </Box>
       </main>
-     <Footer />
+
     </ThemeProvider>
   );
 }

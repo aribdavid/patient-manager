@@ -46,8 +46,19 @@ const updateForm = async (patientId,data) => {
     }
 })
 .then(response => response.json()) 
-.then(json => console.log(json));
 }
+
+// const deleteForm = async (email) => {
+//   const url = `https://aribdavid-patient-manager-api.herokuapp.com/patient/`;
+//   fetch(url, {   
+//     method: "DELETE",
+//     body: JSON.stringify(email),     
+//     headers: {
+//         "Content-type": "application/json"
+//     }
+// })
+// .then(response => response.json()) 
+// }
 
 const handleChange = (newValue) => {
   setValue(newValue);
@@ -72,14 +83,7 @@ const refreshPage = ()=>{
   return (
     <Container component="main" maxWidth="xs">
         <CssBaseline />
-    <Box
-    // sx={{
-    //   marginTop: 8,
-    //   display: 'flex',
-    //   flexDirection: 'column',
-    //   alignItems: 'center',
-    // }}
-  >
+    <Box>
     <Typography component="h1" variant="h4">
       Edit Patient
     </Typography>
@@ -157,7 +161,7 @@ const refreshPage = ()=>{
           >
             Upload File
             <input type='file' id="myFile" hidden />
-          </Button>  
+          </Button> 
           </Grid>  
       </Grid>
       <br/>

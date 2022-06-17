@@ -52,7 +52,6 @@ export default function Browse(){
     <ThemeProvider theme={theme}>
         <Header />
         <Container sx={{ py: 8 }} maxWidth="md">
-          {/* End hero unit */}
           <Grid container spacing={4}>
             {data.length > 0 && data.map((card, index) => (
              <CardGrid card={card} key={index}  />
