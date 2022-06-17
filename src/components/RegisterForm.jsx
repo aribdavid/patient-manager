@@ -16,6 +16,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Copyright from './Copyright';
 import React, { useState } from 'react';
 import Header from './Header';
+import MessageModal from './MessageModal';
 
 
 const theme = createTheme({
@@ -51,7 +52,9 @@ export default function RegisterForm() {
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
 
-
+  const refreshPage = ()=>{
+    window.location.reload();
+  }
 
   // formats full data to MM/DD/YYYY
   function formatDate(receivedData){
@@ -91,11 +94,11 @@ const postForm = async (data) => {
       address: data.get('address'),
       dateOfBirth: date
     });
-    setFirstName('');
-    setLastName('')
-    setEmail('');
-    setAddress('');
-    setValue(new Date('2022-08-18T21:11:54'));
+    // setFirstName('');
+    // setLastName('')
+    // setEmail('');
+    // setAddress('');
+    // setValue(new Date('2022-08-18T21:11:54'));
   };
 
   return (
@@ -200,14 +203,21 @@ const postForm = async (data) => {
                 />
               </Grid>
             </Grid>
-            <Button
+            <MessageModal    
+              type='submit'  
+              sx={{ mt: 3, mb: 2 }}
+              refresher={refreshPage} 
+              buttonName='Register' 
+              message='User Created Successfully!' 
+            />
+            {/* <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
               Register
-            </Button>
+            </Button> */}
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/browse" variant="body2">

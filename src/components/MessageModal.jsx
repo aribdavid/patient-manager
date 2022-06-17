@@ -15,7 +15,7 @@ const style = {
   p: 4,
 };
 
-export default function MessageModal({refresher,buttonName, message}) {
+export default function MessageModal({type,refresher,buttonName, message}) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -23,7 +23,7 @@ export default function MessageModal({refresher,buttonName, message}) {
   return (
     <div>
       <Button 
-        type='button' 
+        type={type} 
         fullWidth
         variant="contained" size="small" onClick={handleOpen}>
           {buttonName}

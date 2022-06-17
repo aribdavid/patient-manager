@@ -164,7 +164,11 @@ const refreshPage = ()=>{
      <CardActions sx={{justifyContent: 'center'}}>
      <MessageModal      
         sx={{ mt: 3, mb: 2 }}
-        refresher={refreshPage} buttonName='Finish' message='User Updated Successfully!' />
+        refresher={refreshPage} 
+        buttonName='Finish' 
+        message='User Updated Successfully!' 
+        type='submit'
+        />
      </CardActions>
     </Box>
   </Box>
