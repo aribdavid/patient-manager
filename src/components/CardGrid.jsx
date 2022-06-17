@@ -21,7 +21,12 @@ export default function CardGrid({card}){
       />
       <CardContent sx={{ flexGrow: 1 }}>
         <Typography gutterBottom variant="h5" component="h2">
-          {card.first_name}
+          <b>{card.first_name}</b>
+        </Typography>
+        <Typography gutterBottom variant="h5" component="h2">
+          Idade:
+          {' '}
+          <b>{ new Date().getFullYear() - card.date_of_birth.split('-')[0]}</b>     
         </Typography>
         {/* <Typography>
           Date of Birth:

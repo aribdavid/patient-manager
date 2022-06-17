@@ -57,24 +57,24 @@ export default function CardModal({patient, title}) {
                     <Typography gutterBottom variant="h4" component="h1">
                       Full Name: 
                       {' '}
-                      {patient.first_name}
+                      <b>{patient.first_name}</b>
                       {' '}
-                      {patient.last_name}
+                      <b>{patient.last_name}</b> 
                     </Typography>
                     <Typography>
                       Date of Birth:
                       {' '}
-                    {patient.date_of_birth.split("T")[0]}
+                    <b>{patient.date_of_birth.split("T")[0]}</b>
                     </Typography>
                     <Typography>
                     Email: 
                     {' '}
-                    {patient.email}
+                    <b>{patient.email}</b>
                     </Typography>
                     <Typography>
                       Address:
                       {' '}
-                    {patient.address}
+                    <b>{patient.address}</b>
                     </Typography>
                   </CardContent>
                   <Button type='button' onClick={() =>setEdit(true)} size="small">Edit</Button>

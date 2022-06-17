@@ -13,7 +13,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Copyright from './Copyright';
+import Footer from './Footer'
 import React, { useState } from 'react';
 import Header from './Header';
 import MessageModal from './MessageModal';
@@ -218,6 +218,7 @@ const postForm = async (data) => {
             >
               Register
             </Button> */}
+            <br/>
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/browse" variant="body2">
@@ -227,7 +228,7 @@ const postForm = async (data) => {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
+        <Footer />
       </Container>
     </ThemeProvider>
   );
