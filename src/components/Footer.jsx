@@ -1,11 +1,14 @@
 import Copyright from "./Copyright"
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import { useNavigate } from 'react-router-dom';
 
 export default function Footer(){
+  const navigate = useNavigate()
+
   return (
     <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        <Typography id='footer' variant="h6" align="center" gutterBottom>
+        <Typography onClick={() => navigate('/home')} id='footer' variant="h6" align="center" gutterBottom>
           MedCloud
         </Typography>
         <Typography
