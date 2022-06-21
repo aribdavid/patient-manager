@@ -43,11 +43,15 @@ export default function Browser(){
   const [totalPages, setTotalPages] = useState(1);
 
   
-   useEffect( () => {
+  useEffect( () => {
     fetchPatients()
-    .then((res) => setData(res));
+    .then((res) => setData(res));  
+  }, [])
+
+  useEffect( () => {
     paginator(data, currentPage, itemsPerPage );
-  }, [currentPage, data,itemsPerPage])
+  }, [currentPage,data,itemsPerPage])
+
 
   const fetchPatients = async () => {
     const url = 'https://aribdavid-patient-manager-api.herokuapp.com/patient';
